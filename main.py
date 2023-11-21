@@ -157,6 +157,16 @@ def delete_expense():
     #code for delete expense function
     #print("code not finished")
 def view_expense():
+    if not expenses:
+        print("No expenses to display.")
+        return
+
+    print("View Expenses:")
+    
+    # Display a numbered list of expenses
+    for i, expense in enumerate(expenses, start=1):
+        print(f"{i}. {expense['Name']} - {expense['Amount']} - {expense['Category']} - {expense['Date']}")
+
     #code for view expense function
     #print("code not finished")
 def generate_report():
