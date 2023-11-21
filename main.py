@@ -68,14 +68,97 @@ def save_to_csv():
         for expense in expenses:
             writer.writerow(expense)
 def edit_expense():
+    if not expenses:
+        print("No expenses to edit.")
+        return
+
+    print("Edit Expense:")
+    
+    # Display a numbered list of expenses for the user to choose from
+    print("Select an expense to edit:")
+    for i, expense in enumerate(expenses, start=1):
+        print(f"{i}. {expense['Name']} - {expense['Date']}")
+
+    try:
+        expense_choice = int(input("Enter the expense number to edit: "))
+    except ValueError:
+        print("Invalid input. Please enter a valid expense number.")
+        return
+
+    if 1 <= expense_choice <= len(expenses):
+        selected_expense = expenses[expense_choice - 1]
+        print("Selected Expense:")
+        print(f"Name: {selected_expense['Name']}")
+        print(f"Amount: {selected_expense['Amount']}")
+        print(f"Category: {selected_expense['Category']}")
+        print(f"Date: {selected_expense['Date']}")
+        
+        print("\nEdit Expense Details:")
+
+        name = input("Name (Press Enter to keep the current value): ")
+        if name:
+            selected_expense['Name'] = name
+
+        amount = input("Amount (Press Enter to keep the current value): ")
+        if amount:
+            selected_expense['Amount'] = float(amount)
+
+        print("Select a new category (Press Enter to keep the current value):")
+        for i, category in enumerate(categories, start=1):
+            print(f"{i}. {category}")
+
+        try:
+            category_choice = int(input("Enter the category number: "))
+        except (ValueError, IndexError):
+            print("Invalid category choice. The category will remain unchanged.")
+        else:
+            selected_expense['Category'] = categories[category_choice - 1]
+
+        date = input("Date (YYYY-MM-DD) (Press Enter to keep the current value): ")
+        if date:
+            selected_expense['Date'] = date
+
+        print("Expense edited successfully.")
+    else:
+        print("Invalid expense number. Please enter a valid expense number.")
+
+
     #code for edit expense function
-    print("code not finished")
+    #print("code not finished")
 def delete_expense(): 
+    if not expenses:
+        print("No expenses to delete.")
+        return
+
+    print("Delete Expense:")
+    
+    # Display a numbered list of expenses for the user to choose from
+    print("Select an expense to delete:")
+    for i, expense in enumerate(expenses, start=1):
+        print(f"{i}. {expense['Name']} - {expense['Date']}")
+
+    try:
+        expense_choice = int(input("Enter the expense number to delete: "))
+    except ValueError:
+        print("Invalid input. Please enter a valid expense number.")
+        return
+
+    if 1 <= expense_choice <= len(expenses):
+        deleted_expense = expenses.pop(expense_choice - 1)
+        print("Deleted Expense:")
+        print(f"Name: {deleted_expense['Name']}")
+        print(f"Amount: {deleted_expense['Amount']}")
+        print(f"Category: {deleted_expense['Category']}")
+        print(f"Date: {deleted_expense['Date']}")
+        print("Expense deleted successfully.")
+    else:
+        print("Invalid expense number. Please enter a valid expense number.")
+
     #code for delete expense function
-    print("code not finished")
+    #print("code not finished")
 def view_expense():
     #code for view expense function
-    print("code not finished")
+    #print("code not finished")
 def generate_report():
     #code for generate report function
     print("code not finished")
