@@ -170,11 +170,30 @@ def view_expense():
     #code for view expense function
     #print("code not finished")
 def generate_report():
+    if not expenses:
+        print("No expenses to generate a report.")
+        return
+
+    print("Generate Report:")
+    
+    # Calculate total expenses for each category
+    category_totals = {}
+    for expense in expenses:
+        category = expense['Category']
+        amount = expense['Amount']
+        category_totals[category] = category_totals.get(category, 0) + amount
+
+    # Create a pie chart using Matplotlib
+    categories = list(category_totals.keys())
+    amounts = list(category_totals.values())
+
+    plt.pie(amounts, labels=categories, autopct='%1.1f%%', startangle=90)
+    plt.axis('equal')  # Equal aspect ratio ensures that the pie is drawn as a circle.
+    plt.title('Expense Distribution by Category')
+    plt.show()
     #code for generate report function
-    print("code not finished")
-def exit():
-    #code for exit function
-    print("code not finished")
+    #print("code not finished")
+
 def main():
     while True:    
         ''' 
@@ -204,7 +223,8 @@ def main():
         elif action == "5":
             generate_report()
         elif action == "6":
-            exit()
+            print("Exiting the Expense Tracker")
+            break
         else:
             print("Invalid option. Please try again")
 if __name__ == "__main__":
