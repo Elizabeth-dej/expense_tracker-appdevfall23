@@ -1,5 +1,4 @@
-import tkinter as tk
-from tkinter import ttk, messagebox, simpledialog
+
 import csv
 import matplotlib.pyplot as plt
 import os
@@ -47,6 +46,8 @@ def add_expense():
 
 # Second Function is to save  expenses to a CSV
 def save_to_csv():
+
+
     csv_file = "expenses.csv"
 
 # Check if the CSV file exists and create a header row if it does
@@ -67,6 +68,9 @@ def save_to_csv():
 
         for expense in expenses:
             writer.writerow(expense)
+            
+            
+# Third Function gives user the option to edit their expenses
 def edit_expense():
     if not expenses:
         print("No expenses to edit.")
@@ -175,8 +179,9 @@ def generate_report():
         return
 
     print("Generate Report:")
-    
+    categories = ["Food", "Entertainment", "Utilities", "Housing", "Shopping", "Transportation", "Other"] 
     # Calculate total expenses for each category
+    category_totals = {}
     category_totals = {}
     for expense in expenses:
         category = expense['Category']
@@ -187,22 +192,26 @@ def generate_report():
     categories = list(category_totals.keys())
     amounts = list(category_totals.values())
 
+    plt.figure(figsize=(8,6))
     plt.pie(amounts, labels=categories, autopct='%1.1f%%', startangle=90)
     plt.axis('equal')  # Equal aspect ratio ensures that the pie is drawn as a circle.
     plt.title('Expense Distribution by Category')
     plt.show()
-    #code for generate report function
-    #print("code not finished")
 
+  
 def main():
-    while True:    
+    while True:   
+    
         ''' 
+        
         This is the main function to show to users 
         '''
+        
         print("Welcome to the Expense tracker.")
 
         print("""
             Welcome to the Expense tracker.
+            [0] - Save to CSV
             [1] - Add Expense
             [2] - Edit Expense
             [3] - Delete Expense
@@ -212,14 +221,16 @@ def main():
             """)
         
         action = input("What would you like to do? ")
-        if action == "1":
+        if action == "0":
+            save_to_csv()
+        elif action == "1":
             add_expense()
         elif action == "2":
             edit_expense()
         elif action == "3":
             delete_expense()
         elif action == "4":
-            view_expense
+            view_expense()
         elif action == "5":
             generate_report()
         elif action == "6":
