@@ -31,8 +31,6 @@ def add_expense():
         return
 
     date = input("Date  (YYYY-MM-DD): ")    
-    
-    # Create user validations here
 
     # Dictionary to define expense 
     expense = {
@@ -158,8 +156,7 @@ def delete_expense():
     else:
         print("Invalid expense number. Please enter a valid expense number.")
 
-    #code for delete expense function
-    #print("code not finished")
+    
 def view_expense():
     if not expenses:
         print("No expenses to display.")
@@ -171,8 +168,7 @@ def view_expense():
     for i, expense in enumerate(expenses, start=1):
         print(f"{i}. {expense['Name']} - {expense['Amount']} - {expense['Category']} - {expense['Date']}")
 
-    #code for view expense function
-    #print("code not finished")
+    
 def generate_report():
     if not expenses:
         print("No expenses to generate a report.")
