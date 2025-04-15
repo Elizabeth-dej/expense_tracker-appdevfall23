@@ -1,4 +1,7 @@
-Name,Amount,Category,Date
-Chick Fil A,10.0,0,2023-12-01
-Gas,40.0,5,2023-11-30
-CHick Fil A,10.0,0,2023-12-01
+Amount,Category,Description,Date
+12.50,Food,Lunch at Subway,2025-04-10 12:15:30
+45.00,Transportation,Gas refill,2025-04-11 09:20:10
+89.99,Shopping,Shoes from Nike,2025-04-12 16:45:00
+30.00,Entertainment,Movie night,2025-04-12 20:30:00
+1000.00,Housing,April Rent,2025-04-01 08:00:00
+15.75,Food,Coffee & bagel,2025-04-13 08:45:10
